@@ -1,6 +1,6 @@
 * {
-	-webkit-transition: all 1s ease-out;
-	transition: all 1s ease-out;
+	-webkit-transition: all 0.8s ease-out;
+	transition: all 0.8s ease-out;
 }
 
 body {
@@ -94,8 +94,7 @@ a:visited {
 
 .resultsRowInfo:hover {
 	color: #fff;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+	text-shadow: 0 0 5px #92cddc;
 }
 
 #randomBtn {
