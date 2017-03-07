@@ -1,6 +1,7 @@
 * {
 	-webkit-transition: all 0.8s ease-out;
 	transition: all 0.8s ease-out;
+	outline: none !important;
 }
 
 body {
@@ -21,11 +22,6 @@ body {
 	font-size: 3em;
 	line-height: 90%;
 	margin-bottom: 20px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	cursor: default;
 }
 
 #searchBox {
@@ -40,11 +36,8 @@ body {
 }
 
 #searchBox:focus {
-	outline: none;
-}
-
-#searchBtn {
-	display: none;
+	width: 60vw !important;
+	max-width: 500px;
 }
 
 a,
@@ -66,30 +59,30 @@ a:visited {
 }
 
 .results {
-	display: none;
 	font-family: monospace;
 	font-size: .9em;
-	margin: 25px 0;
+	margin: 25px auto;
 	text-align: left;
-	width: 100%;
+}
+
+.resultsRowTitle,
+.resultsRowInfo {
+	background: #000;
+	box-shadow: 0 12px 30px 25px rgba(0, 0, 0, 0.2);
+	padding: 5px 10px;
 }
 
 .resultsRowTitle {
-	background: #000;
 	border-radius: 3px 3px 0 0;
-	box-shadow: 0 12px 30px 25px rgba(0, 0, 0, 0.2);
 	color: #fff;
 	font-size: 1.4em;
-	padding: 5px 10px 0 5px;
+	padding-bottom: 0px;
 }
 
 .resultsRowInfo {
-	background: #000;
 	border-radius: 0 0 5px 5px;
-	box-shadow: 0 12px 30px 25px rgba(0, 0, 0, 0.2);
 	color: #CCC;
 	margin-bottom: 10px;
-	padding: 5px 10px;
 }
 
 .resultsRowInfo:hover {
@@ -100,14 +93,14 @@ a:visited {
 #randomBtn {
 	border-radius: 30px 10px 10px 30px;
 	border-width: 3px;
-	bottom: 20px;
 	box-shadow: 0 0 30px 5px rgba(100, 100, 220, 0.7);
-	outline: none;
 	padding: 5px;
 	position: fixed;
+	bottom: 10px;
 	right: 5px;
 }
 
 #randomBtn:hover {
 	box-shadow: 0 0 40px 10px rgba(0, 100, 150, 0.8);
 }
+

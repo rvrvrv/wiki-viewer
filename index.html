@@ -7,11 +7,12 @@
 	<title>Wikipedia Viewer</title>
 	<link href="https://fonts.googleapis.com/css?family=Bitter|Eczar:800" rel="stylesheet">
 	<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div class="container main">
+	<div class="container-fluid main">
 		<div class="row" id="title">Wikipedia Viewer</div>
 		<div class="row" id="search">
 			<form onsubmit="return false">
@@ -19,7 +20,7 @@
 				<button class="btn btn-primary" id="searchBtn"><i class="fa fa-search"></i></button>
 			</form>
 		</div>
-		<div class="container results"></div>
+		<div class="results animated"></div>
 		<div id="random">
 			<button class="btn btn-default" id="randomBtn"><i class="fa fa-question-circle 2x"></i>&nbsp;Explore a Random Wiki Entry</button>
 		</div>
