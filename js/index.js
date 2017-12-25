@@ -17,9 +17,8 @@ $(document).ready(() => {
       const links = data[3];
 
       // Check for no results
-      if (data[1].length === 0) {
-        $rslts.append('<div class="entry"><div class="title">No results found</div></div>');
-      } else {
+      if (!data[1]) $rslts.append('<div class="entry"><div class="title">No results found.</div></div>');
+      else {
         titles.forEach((t, i) => {
           $rslts.append(`
             <div class="entry">
@@ -36,7 +35,7 @@ $(document).ready(() => {
         $rslts.removeClass('fadeOutUp').addClass('fadeInDown');
       })
       .fail(() => {
-        $rslts.append('<div class="entry"><div class="title">No results found</div></div>');
+        $rslts.append('<div class="entry"><div class="title">An error has occurred. Please try again later.</div></div>');
       });
   }
 
