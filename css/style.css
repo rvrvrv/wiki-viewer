@@ -44,7 +44,7 @@ input {
 }
 
 input:focus {
-	width: 20em;
+	width: 20em !important;
 }
 
 .main {
@@ -54,7 +54,7 @@ input:focus {
 
 .results {
 	font-family: monospace;
-	font-size: .9em;
+	font-size: .85em;
 	margin: 2em auto;
 	text-align: left;
 	word-wrap: break-word;
