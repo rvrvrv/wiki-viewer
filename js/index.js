@@ -73,7 +73,4 @@ $(document).ready(() => {
       setTimeout(() => performSearch(txt), 500);
     } else toggleSearchBtn(true);
   });
-
-  // Open random entry in new tab
-  $('#randomBtn').click(() => window.open('https://en.wikipedia.org/wiki/Special:Random'));
 });
