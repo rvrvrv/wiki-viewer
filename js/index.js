@@ -2,9 +2,23 @@
 $(document).ready(() => {
   // Global vars
   const $sBox = $('#searchBox');
+  const $sBtn = $('#searchBtn');
+  const $sIcn = $('#searchIcon');
   const $rslts = $('.results');
-  let txt = '';
   let lastSearch = '';
+
+  // Toggle search button
+  function toggleSearchBtn(enable) {
+    // Restore search button to original state
+    if (enable) {
+      $sIcn.removeClass('fa-circle-o-notch fa-spin').addClass('fa-search');
+      $sBtn.removeAttr('disabled');
+    } else {
+      // Change search icon to animated spinner and disable button
+      $sIcn.removeClass('fa-search').addClass('fa-circle-o-notch fa-spin');
+      $sBtn.attr('disabled', 'disabled');
+    }
+  }
 
   // Retrieve search results from Wikipedia
   function performSearch(query) {
@@ -15,10 +29,10 @@ $(document).ready(() => {
       const titles = data[1];
       const infos = data[2];
       const links = data[3];
-
       // Check for no results
-      if (!data[1]) $rslts.append('<div class="entry"><div class="title">No results found.</div></div>');
+      if (!data[1].length) $rslts.append('<div class="entry"><div class="title">No results found.</div></div>');
       else {
+        // Generate HTML for results
         titles.forEach((t, i) => {
           $rslts.append(`
             <div class="entry">
@@ -33,24 +47,22 @@ $(document).ready(() => {
         // Display all results smoothly
         $rslts.append(`Retrieved from: ${url}<br>`);
         $rslts.removeClass('fadeOutUp').addClass('fadeInDown');
+        toggleSearchBtn(true);
       })
       .fail(() => {
+        // If applicable, display error message and re-enable search button
         $rslts.append('<div class="entry"><div class="title">An error has occurred. Please try again later.</div></div>');
+        toggleSearchBtn(true);
       });
   }
 
-  // Upon keypress or mouse click, expand the search box
-  $sBox.keyup(() => $sBox.focus());
-  $sBox.click(() => $sBox.focus());
-
-  // Open random entry in new tab
-  $('#randomBtn').click(() => window.open('https://en.wikipedia.org/wiki/Special:Random'));
-
   // Search button click-handling
   $('#searchBtn').click(() => {
+    // First, update UI
     $sBox.blur();
+    toggleSearchBtn();
     // Trim input field to remove white spaces on each side
-    txt = $sBox.val().trim();
+    const txt = $sBox.val().trim();
     $sBox.val(txt).trigger('change');
 
     // If request is not a duplicate or blank, perform the search
@@ -59,6 +71,9 @@ $(document).ready(() => {
       $sBox.css('width', `${(txt.length + 1) * 12}px`);
       $rslts.removeClass('fadeInDown').addClass('fadeOutUp');
       setTimeout(() => performSearch(txt), 500);
-    }
+    } else toggleSearchBtn(true);
   });
+
+  // Open random entry in new tab
+  $('#randomBtn').click(() => window.open('https://en.wikipedia.org/wiki/Special:Random'));
 });
